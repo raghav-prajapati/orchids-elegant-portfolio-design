@@ -23,23 +23,33 @@ export function Preloader() {
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white"
         >
           <div className="relative overflow-hidden text-center">
-            <motion.h1
-              initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
-              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="text-4xl md:text-6xl font-serif text-black mb-2"
-            >
-              Raghav Prajapati
-            </motion.h1>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-              className="text-sm md:text-base tracking-widest text-zinc-500 uppercase font-sans"
-            >
-              Frontend Developer
-            </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
+                animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="text-4xl md:text-6xl font-serif text-black mb-2"
+              >
+                Raghav Prajapati
+              </motion.h1>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.1 }}
+                transition={{ delay: 0.5, duration: 1 }}
+                className="absolute -top-10 -right-10 text-8xl font-bold select-none pointer-events-none"
+              >
+                ラーガヴ
+              </motion.div>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                className="text-sm md:text-base tracking-widest text-zinc-500 uppercase font-sans font-bold"
+              >
+                フロントエンド開発者
+              </motion.p>
+
 
             <motion.div
               initial={{ scaleX: 0 }}
