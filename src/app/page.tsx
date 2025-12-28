@@ -71,13 +71,32 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative flex min-h-screen flex-col items-center justify-center px-8 pt-20 overflow-hidden">
-        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Anime Background Patterns */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+             style={{ backgroundImage: 'radial-gradient(#8B5E3C 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+        
+        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
+          {/* Japanese Decorative Text */}
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 0.1, x: 0 }}
+            transition={{ duration: 1, delay: 3 }}
+            className="absolute -left-20 top-0 text-[15vw] font-bold text-black select-none pointer-events-none hidden lg:block"
+            style={{ writingMode: 'vertical-rl' }}
+          >
+            開発者
+          </motion.div>
+
           <div className="z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 2.8 }}
             >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="h-[2px] w-12 bg-brown" />
+                <span className="text-xs font-bold tracking-[0.3em] uppercase text-brown">フロントエンド</span>
+              </div>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-black leading-[1.1] mb-8">
                 Designing <span className="italic text-brown font-light">clean</span> & modern web interfaces.
               </h1>
@@ -86,18 +105,18 @@ export default function Home() {
               </p>
               <div className="flex flex-wrap gap-6">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, x: 5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-10 py-4 bg-brown text-white text-sm uppercase tracking-widest font-sans flex items-center gap-3 group relative overflow-hidden"
+                  className="px-10 py-4 bg-black text-white text-sm uppercase tracking-widest font-sans flex items-center gap-3 group relative overflow-hidden border-2 border-black"
                 >
                   <span className="relative z-10">View Work</span>
                   <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
-                  <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-brown translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-10 py-4 border border-brown text-brown text-sm uppercase tracking-widest font-sans flex items-center gap-3 hover:bg-brown/5 transition-all"
+                  className="px-10 py-4 border-2 border-brown text-brown text-sm uppercase tracking-widest font-sans flex items-center gap-3 hover:bg-brown hover:text-white transition-all duration-300"
                 >
                   Download CV <Download className="w-4 h-4" />
                 </motion.button>
@@ -107,20 +126,26 @@ export default function Home() {
 
           <div className="relative flex justify-center">
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, delay: 3, ease: "easeOut" }}
+              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 1.2, delay: 3, ease: [0.23, 1, 0.32, 1] }}
               className="relative w-72 h-72 md:w-[450px] md:h-[450px]"
             >
-              <div className="absolute inset-0 border border-brown transform translate-x-4 translate-y-4 -z-10" />
-              <div className="relative w-full h-full overflow-hidden border border-zinc-100 bg-beige">
+              {/* Manga Style Border Layers */}
+              <div className="absolute inset-0 border-4 border-black transform translate-x-4 translate-y-4 -z-10" />
+              <div className="absolute inset-0 border-2 border-brown transform -translate-x-2 -translate-y-2 -z-10 opacity-50" />
+              
+              <div className="relative w-full h-full overflow-hidden border-4 border-black bg-beige group">
                 <Image
                   src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/IMG_20251224_231314_440-1766909752864.webp?width=8000&height=8000&resize=contain"
                   alt="Raghav Prajapati"
                   fill
-                  className="object-cover hover:scale-105 transition-transform duration-1000"
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
                   priority
                 />
+                {/* Halftone Overlay */}
+                <div className="absolute inset-0 opacity-10 pointer-events-none group-hover:opacity-20 transition-opacity" 
+                     style={{ backgroundImage: 'radial-gradient(black 1px, transparent 0)', backgroundSize: '4px 4px' }} />
               </div>
             </motion.div>
           </div>
