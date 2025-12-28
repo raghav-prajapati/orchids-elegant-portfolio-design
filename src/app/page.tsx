@@ -340,16 +340,20 @@ export default function Home() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-32 px-8 bg-white">
+      <section id="experience" className="py-32 px-8 bg-white relative overflow-hidden">
+        {/* Decorative Manga Lines */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none -z-10"
+             style={{ backgroundImage: 'linear-gradient(45deg, black 1px, transparent 1px), linear-gradient(-45deg, black 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        
         <div className="container mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-sm uppercase tracking-[0.4em] text-brown font-sans mb-4">Journey</h2>
-            <h3 className="text-4xl md:text-5xl font-serif text-black">Experience</h3>
+            <h2 className="text-sm uppercase tracking-[0.4em] text-brown font-sans mb-4 font-bold">Journey</h2>
+            <h3 className="text-4xl md:text-5xl font-serif text-black">Professional Experience</h3>
           </div>
 
           <div className="relative max-w-4xl mx-auto experience-container">
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-zinc-100 -translate-x-1/2">
-              <div className="experience-line absolute top-0 left-0 w-full bg-brown origin-top" />
+            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-zinc-100 -translate-x-1/2">
+              <div className="experience-line absolute top-0 left-0 w-full bg-black origin-top" />
             </div>
 
             <div className="space-y-24">
@@ -374,16 +378,17 @@ export default function Home() {
                 },
               ].map((item, index) => (
                 <div key={index} className={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-                  <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-white border-2 border-brown -translate-x-1/2 z-10" />
+                  <div className="absolute left-0 md:left-1/2 w-6 h-6 bg-white border-4 border-black -translate-x-1/2 z-10 rotate-45" />
                   <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-20 md:text-right' : 'md:pl-20'}`}>
                     <motion.div
                       initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.8, delay: 0.2 }}
+                      className="p-8 border-2 border-zinc-100 hover:border-black transition-colors bg-white/50 backdrop-blur-sm"
                     >
                       <span className="text-brown font-sans text-xs uppercase tracking-widest font-bold">{item.period}</span>
-                      <h4 className="text-2xl font-serif mt-2 mb-2">{item.role}</h4>
+                      <h4 className="text-2xl font-serif mt-2 mb-2 font-bold">{item.role}</h4>
                       <p className="text-zinc-400 font-serif italic mb-4">{item.company}</p>
                       <p className="text-zinc-500 font-sans text-sm leading-relaxed">{item.desc}</p>
                     </motion.div>
