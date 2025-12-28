@@ -216,14 +216,15 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-32 px-8 bg-white" ref={skillsRef}>
+      <section id="skills" className="py-32 px-8 bg-white relative" ref={skillsRef}>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-brown/5 rounded-full blur-3xl -z-10" />
         <div className="container mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-sm uppercase tracking-[0.4em] text-brown font-sans mb-4">Expertise</h2>
+            <h2 className="text-sm uppercase tracking-[0.4em] text-brown font-sans mb-4 font-bold">Expertise</h2>
             <h3 className="text-4xl md:text-5xl font-serif text-black">Technical Skills</h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { name: "React / Next.js", icon: <Code2 />, level: "95%" },
               { name: "TypeScript", icon: <Globe />, level: "90%" },
@@ -234,22 +235,26 @@ export default function Home() {
             ].map((skill, index) => (
               <motion.div
                 key={skill.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group p-8 border-2 border-black hover:bg-black hover:text-white transition-all duration-300 relative overflow-hidden"
               >
-                <div className="flex items-center justify-between mb-4">
+                {/* Manga Pattern on Hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 pointer-events-none transition-opacity" 
+                     style={{ backgroundImage: 'radial-gradient(white 1px, transparent 0)', backgroundSize: '8px 8px' }} />
+                
+                <div className="flex items-center justify-between mb-6 relative z-10">
                   <div className="flex items-center gap-4">
-                    <div className="text-zinc-400 group-hover:text-brown transition-colors">
+                    <div className="text-brown group-hover:text-white transition-colors">
                       {skill.icon}
                     </div>
-                    <span className="font-serif text-lg">{skill.name}</span>
+                    <span className="font-serif text-lg font-bold">{skill.name}</span>
                   </div>
-                  <span className="text-zinc-400 text-sm font-sans">{skill.level}</span>
+                  <span className="text-zinc-400 group-hover:text-zinc-300 text-sm font-sans">{skill.level}</span>
                 </div>
-                <div className="h-[2px] w-full bg-zinc-100 overflow-hidden">
+                <div className="h-[4px] w-full bg-zinc-100 group-hover:bg-zinc-800 overflow-hidden relative z-10">
                   <div 
                     className="skill-line-inner h-full bg-brown origin-left" 
                     style={{ width: skill.level }}
@@ -262,11 +267,11 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-32 px-8 bg-beige/20">
+      <section id="projects" className="py-32 px-8 bg-beige/10">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
             <div>
-              <h2 className="text-sm uppercase tracking-[0.4em] text-brown font-sans mb-4">Selected Works</h2>
+              <h2 className="text-sm uppercase tracking-[0.4em] text-brown font-sans mb-4 font-bold">Selected Works</h2>
               <h3 className="text-4xl md:text-5xl font-serif text-black">Portfolio Showcase</h3>
             </div>
             <p className="text-zinc-500 font-sans max-w-sm">
@@ -274,7 +279,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {[
               {
                 title: "Luxura E-commerce",
@@ -306,22 +311,26 @@ export default function Home() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, delay: index * 0.2 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="group cursor-pointer"
               >
-                <div className="relative aspect-[4/3] overflow-hidden mb-8 border border-zinc-100">
+                <div className="relative aspect-[16/10] overflow-hidden mb-8 border-4 border-black">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500" />
-                  <div className="absolute inset-0 border-[0px] border-brown group-hover:border-[1px] transition-all duration-500" />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <span className="px-8 py-3 bg-white text-black font-serif font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-500">View Project</span>
+                  </div>
+                  {/* Decorative corner */}
+                  <div className="absolute top-0 left-0 w-8 h-8 bg-brown translate-x-[-50%] translate-y-[-50%] rotate-45" />
                 </div>
                 <div className="flex flex-col gap-2">
                   <span className="text-[10px] uppercase tracking-[0.3em] text-brown font-sans font-bold">{project.tech}</span>
-                  <h4 className="text-2xl font-serif text-black">{project.title}</h4>
+                  <h4 className="text-2xl font-serif text-black group-hover:text-brown transition-colors">{project.title}</h4>
                   <p className="text-zinc-500 font-sans text-sm max-w-sm">{project.desc}</p>
                 </div>
               </motion.div>
