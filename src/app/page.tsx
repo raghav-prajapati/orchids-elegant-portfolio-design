@@ -420,31 +420,36 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 1 }}
           >
-            <h2 className="text-sm uppercase tracking-[0.5em] text-brown font-sans mb-8">Get In Touch</h2>
+            <h2 className="text-sm uppercase tracking-[0.5em] text-brown font-sans mb-8 font-bold">Get In Touch</h2>
             <h3 className="text-5xl md:text-8xl font-serif text-black mb-16 leading-none">
               Let's work <span className="italic">together</span>.
             </h3>
             
             <div className="flex flex-col items-center gap-12">
-              <a 
-                href="mailto:sp213826@gmail.com" 
-                className="text-2xl md:text-4xl font-serif text-black hover:text-brown transition-colors border-b border-zinc-200 pb-2"
+              <motion.button
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => window.location.href = "mailto:sp213826@gmail.com"}
+                className="group relative px-12 py-6 bg-black text-white text-xl md:text-2xl font-serif border-4 border-black transition-all"
               >
-                sp213826@gmail.com
-              </a>
+                <span className="relative z-10">Start a Conversation</span>
+                <div className="absolute inset-0 bg-brown translate-x-2 translate-y-2 -z-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
+              </motion.button>
 
               <div className="flex gap-8">
                 {[
                   { name: "Instagram", icon: <Instagram />, href: "https://www.instagram.com/4qx.5" },
-                  { name: "Email", icon: <Mail />, href: "mailto:sp213826@gmail.com" },
+                  { name: "Twitter", icon: <Zap />, href: "#" }, // Placeholder for anime feel
                 ].map((social) => (
                   <motion.a
                     key={social.name}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, color: "#8B5E3C" }}
-                    className="flex items-center gap-3 text-zinc-400 font-sans uppercase tracking-[0.2em] text-[10px]"
+                    className="flex items-center gap-3 text-zinc-400 font-sans uppercase tracking-[0.2em] text-[10px] font-bold"
                   >
-                    <span className="p-3 border border-zinc-100 rounded-full">{social.icon}</span>
+                    <span className="p-3 border-2 border-black rounded-none bg-white text-black group-hover:bg-brown group-hover:text-white transition-all">{social.icon}</span>
                     {social.name}
                   </motion.a>
                 ))}
@@ -454,8 +459,11 @@ export default function Home() {
         </div>
         
         {/* Decorative background text */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-serif text-zinc-50 pointer-events-none -z-0 opacity-50 whitespace-nowrap">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-bold text-black opacity-[0.03] select-none pointer-events-none whitespace-nowrap">
           CONTACT CONTACT CONTACT
+        </div>
+        <div className="absolute bottom-10 right-10 text-8xl font-bold text-brown opacity-10 select-none pointer-events-none" style={{ writingMode: 'vertical-rl' }}>
+          連絡
         </div>
       </section>
 
